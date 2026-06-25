@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Feedback Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    display:flex;
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed,
+        #ec4899
+    );
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    color:white;
+    padding:30px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+.menu a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.menu a:hover{
+    background:rgba(255,255,255,.2);
+}
+
+/* MAIN CONTENT */
+
+.main{
+    flex:1;
+    padding:30px;
+    color:white;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#fff;
+    color:#4f46e5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:25px;
+    transition:.4s;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h2{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+.card p{
+    opacity:.9;
+}
+
+/* TABLE */
+
+.table-container{
+    margin-top:35px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:25px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    color:white;
+}
+
+th,td{
+    padding:15px;
+    text-align:left;
+}
+
+th{
+    border-bottom:1px solid rgba(255,255,255,.3);
+}
+
+tr:hover{
+    background:rgba(255,255,255,.08);
+}
+
+/* STATUS */
+
+.good{
+    color:#4ade80;
+}
+
+.average{
+    color:#facc15;
+}
+
+.bad{
+    color:#f87171;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+body{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        💬 FeedbackHub
+    </div>
+
+    <div class="menu">
+        <a href="#">🏠 Dashboard</a>
+        <a href="#">📝 Submit Feedback</a>
+        <a href="#">📋 Feedback List</a>
+        <a href="#">📊 Statistics</a>
+        <a href="#">⚙ Settings</a>
+        <a href="#">🚪 Logout</a>
+    </div>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+    <div class="header">
+
+        <div>
+            <h1>Hello, Admin 👋</h1>
+            <p>Welcome back to FeedbackHub Dashboard</p>
+        </div>
+
+        <div class="profile">
+            <div class="avatar">A</div>
+            <span>Admin User</span>
+        </div>
+
+    </div>
+
+    <!-- Stats Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>120</h2>
+            <p>Total Feedbacks</p>
+        </div>
+
+        <div class="card">
+            <h2>4.8 ⭐</h2>
+            <p>Average Rating</p>
+        </div>
+
+        <div class="card">
+            <h2>15</h2>
+            <p>Categories</p>
+        </div>
+
+        <div class="card">
+            <h2>92%</h2>
+            <p>Satisfaction Rate</p>
+        </div>
+
+    </div>
+
+    <!-- Recent Feedback -->
+
+    <div class="table-container">
+
+        <h2 style="margin-bottom:20px;">
+            Recent Feedback
+        </h2>
+
+        <table>
+
+            <tr>
+                <th>User</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>John Doe</td>
+                <td>Website</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td class="good">Excellent</td>
+            </tr>
+
+            <tr>
+                <td>Sarah</td>
+                <td>Course</td>
+                <td>⭐⭐⭐⭐</td>
+                <td class="average">Good</td>
+            </tr>
+
+            <tr>
+                <td>Michael</td>
+                <td>Event</td>
+                <td>⭐⭐⭐</td>
+                <td class="average">Average</td>
+            </tr>
+
+            <tr>
+                <td>Emma</td>
+                <td>Service</td>
+                <td>⭐⭐</td>
+                <td class="bad">Needs Improvement</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

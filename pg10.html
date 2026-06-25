@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Submit Feedback</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        -45deg,
+        #4f46e5,
+        #7c3aed,
+        #ec4899,
+        #06b6d4
+    );
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
+    overflow:hidden;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Floating Shapes */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+}
+
+.c1{
+    width:250px;
+    height:250px;
+    top:-50px;
+    left:-50px;
+}
+
+.c2{
+    width:180px;
+    height:180px;
+    bottom:50px;
+    right:50px;
+}
+
+.c3{
+    width:120px;
+    height:120px;
+    top:180px;
+    right:250px;
+}
+
+/* Form Container */
+
+.feedback-card{
+    width:500px;
+    padding:35px;
+
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.2);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+    color:white;
+    z-index:10;
+}
+
+.feedback-card h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:25px;
+    opacity:.8;
+}
+
+/* Inputs */
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea{
+
+    width:100%;
+    padding:14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:15px;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#ddd;
+}
+
+select{
+    color:white;
+}
+
+option{
+    color:black;
+}
+
+textarea{
+    height:120px;
+    resize:none;
+}
+
+/* Star Rating */
+
+.rating{
+    text-align:center;
+    margin:20px 0;
+}
+
+.rating input{
+    display:none;
+}
+
+.rating label{
+    font-size:35px;
+    color:#ccc;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label{
+    color:#FFD700;
+}
+
+/* Button */
+
+.submit-btn{
+    width:100%;
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    background:white;
+    color:#4f46e5;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(255,255,255,.3);
+}
+
+/* Thank You Popup */
+
+.popup{
+    position:fixed;
+    top:20px;
+    right:20px;
+
+    background:#22c55e;
+    color:white;
+
+    padding:15px 25px;
+    border-radius:10px;
+
+    display:none;
+
+    animation:slide .5s ease;
+}
+
+@keyframes slide{
+    from{
+        transform:translateX(100%);
+    }
+    to{
+        transform:translateX(0);
+    }
+}
+
+@media(max-width:600px){
+
+.feedback-card{
+    width:90%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+
+<div class="feedback-card">
+
+    <h1>💬 Submit Feedback</h1>
+
+    <p class="subtitle">
+        Your opinion helps us improve our services
+    </p>
+
+    <div class="input-group">
+        <input type="text" placeholder="👤 Full Name">
+    </div>
+
+    <div class="input-group">
+        <input type="email" placeholder="📧 Email Address">
+    </div>
+
+    <div class="input-group">
+        <select>
+            <option>Select Category</option>
+            <option>Website</option>
+            <option>Course</option>
+            <option>Event</option>
+            <option>Service</option>
+        </select>
+    </div>
+
+    <div class="rating">
+
+        <input type="radio" id="star5" name="rating">
+        <label for="star5">★</label>
+
+        <input type="radio" id="star4" name="rating">
+        <label for="star4">★</label>
+
+        <input type="radio" id="star3" name="rating">
+        <label for="star3">★</label>
+
+        <input type="radio" id="star2" name="rating">
+        <label for="star2">★</label>
+
+        <input type="radio" id="star1" name="rating">
+        <label for="star1">★</label>
+
+    </div>
+
+    <div class="input-group">
+        <textarea placeholder="✍️ Share your experience..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="thankYou()">
+        🚀 Submit Feedback
+    </button>
+
+</div>
+
+<div class="popup" id="popup">
+    🎉 Thank you for your valuable feedback!
+</div>
+
+<script>
+
+function thankYou(){
+
+    let popup = document.getElementById("popup");
+
+    popup.style.display="block";
+
+    setTimeout(()=>{
+        popup.style.display="none";
+    },3000);
+
+}
+
+</script>
+
+</body>
+</html>
